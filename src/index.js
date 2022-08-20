@@ -5,19 +5,19 @@ const users = [
   {
     firstName: 'Saul',
     lastName: 'Goodman',
-    age: 48,
+    birthYear: 1960,
     website: 'https://bettercallsaul.com'
   },
   {
     firstName: 'Walter',
     lastName: 'White',
-    age: 54,
+    birthYear: 1958,
     website: 'https://walter-white.meth'
   },
   {
     firstName: 'Jessy',
     lastName: 'Pinkman',
-    age: 29,
+    birthYear: 1984,
     website: 'https://jessy-yo.bitch'
   }
 ]
@@ -27,14 +27,39 @@ function formatName(firstName, lastName) {
 }
 
 class UserInfo extends React.Component {
+  constructor(props) {
+    super(props)
+
+    // We shall pass this birthYear property to Age component
+    this.state = { birthYear: this.props.user.birthYear }
+  }
+
   render() {
     return (
       <div>
         <div>User: {formatName(this.props.user.firstName, this.props.user.lastName)}</div>
-        <div>Age: {this.props.user.age}</div>
+        <div>Birth Year: {this.props.user.birthYear}</div>
+        <div>Age: <Age fromYear={2010} birthYear={this.state.birthYear}/></div>
         <div>Website: <a href={this.props.user.website} target='_blank'>Personal website</a></div>
         <br></br>
       </div>
+    )
+  }
+}
+
+class Age extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {birthYear: this.props.birthYear, fromYear: this.props.fromYear || new Date().getFullYear()}
+  }
+
+  calculateAge() {
+    return this.state.fromYear - this.props.birthYear
+  }
+
+  render() {
+    return (
+      <>{this.calculateAge()} (On {this.state.fromYear})</>
     )
   }
 }
@@ -66,10 +91,9 @@ class Clock extends React.Component {
 
   render() {
     return (
-      <div>
-        <p><strong>Most Wanted</strong></p>
-        <p>System Time: {this.state.date.toLocaleTimeString()}</p>
-      </div>
+      <>
+        {this.state.date.toLocaleTimeString()}
+      </>
     )
   }
 }
@@ -77,7 +101,10 @@ class Clock extends React.Component {
 function App() {
   return (
     <div>
-      <Clock />
+      <div>
+        <p><strong>Most Wanted</strong></p>
+        <p>System Time: <Clock /></p>
+      </div>
       <div>
         {users.map((user, index) => {
           return <UserInfo user={user} key={index} />
