@@ -7,15 +7,19 @@ const user = {
   website: 'https://sowrensen.dev'
 }
 
-function formatName (firstName, lastName) {
+function formatName(firstName, lastName) {
   return `${firstName} ${lastName}`;
 }
 
-const helloWorld = <div>
-  <div>User: {formatName(user.firstName, user.lastName)}</div>
-  <div>Age: {user.age}</div>
-  <div>Website: <a href={user.website} target='_blank'>Personal website</a></div>
-</div>
+function UserInfo(props) {
+  return (
+    <div>
+      <div>User: {formatName(props.user.firstName, props.user.lastName)}</div>
+      <div>Age: {props.user.age}</div>
+      <div>Website: <a href={props.user.website} target='_blank'>Personal website</a></div>
+    </div>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(helloWorld)
+root.render(<UserInfo user={user}/>)
