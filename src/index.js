@@ -42,12 +42,12 @@ class UserInfo extends React.Component {
 function App() {
   return (
     <div>
-      <UserInfo user={users[0]}/>
-      <UserInfo user={users[1]}/>
-      <UserInfo user={users[2]}/>
+      {users.map((user, index) => {
+        return <UserInfo user={user} key={index} />
+      })}
     </div>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App/>)
+root.render(<App />)
