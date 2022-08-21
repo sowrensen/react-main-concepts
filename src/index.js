@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Clock from './Clock';
-import UserInfo from './UserInfo'
+import Personnel from './Personnel'
 
-const users = [
+const convicts = [
   {
     firstName: 'Saul',
     lastName: 'Goodman',
@@ -35,8 +35,8 @@ function App() {
         <p>System Time: <Clock /></p>
       </div>
       <div>
-        {users.map((user, index) => {
-          return <UserInfo user={user} key={index} />
+        {convicts.map((person, index) => {
+          return <Personnel person={person} key={index} />
         })}
       </div>
     </div>
