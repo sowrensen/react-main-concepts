@@ -7,17 +7,17 @@ class UserInfo extends React.Component {
 
     // We shall pass this birthYear property to Age component
     this.state = { birthYear: this.props.user.birthYear, isCrimeVisible: false }
-
-    // Bind the event to the callback, it won't work without this line
-    // this.showCrime = this.showCrime.bind(this)
   }
 
   formatName(firstName, lastName) {
     return `${firstName} ${lastName}`;
   }
 
-  // To avoid binding, we can make this to a public class field
-  showCrime = () => {
+  // To avoid binding manually in constructor, we can make this to a public class field
+  showCrime = (name) => {
+    if (!this.state.isCrimeVisible) {
+      console.log(`Revealing ${name}'s crimes...`)
+    }
     this.setState((prevState) => ({ isCrimeVisible: !prevState.isCrimeVisible }))
   }
 
@@ -30,7 +30,7 @@ class UserInfo extends React.Component {
         <div>Website: <a href={this.props.user.website} target='_blank'>Personal website</a></div>
         <div>
           Crime: {this.state.isCrimeVisible ? this.props.user.crime : 'Click to reveal'} {' '}
-          <button onClick={this.showCrime}>{this.state.isCrimeVisible ? 'Hide' : 'Show'}</button>
+          <button onClick={(e) => this.showCrime(this.props.user.firstName)}>{this.state.isCrimeVisible ? 'Hide' : 'Show'}</button>
         </div>
         <br></br>
       </div>
