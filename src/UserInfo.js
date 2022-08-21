@@ -9,14 +9,15 @@ class UserInfo extends React.Component {
     this.state = { birthYear: this.props.user.birthYear, isCrimeVisible: false }
 
     // Bind the event to the callback, it won't work without this line
-    this.showCrime = this.showCrime.bind(this)
+    // this.showCrime = this.showCrime.bind(this)
   }
 
   formatName(firstName, lastName) {
     return `${firstName} ${lastName}`;
   }
 
-  showCrime() {
+  // To avoid binding, we can make this to a public class field
+  showCrime = () => {
     this.setState((prevState) => ({ isCrimeVisible: !prevState.isCrimeVisible }))
   }
 
