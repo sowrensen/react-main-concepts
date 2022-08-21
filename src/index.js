@@ -8,19 +8,22 @@ const users = [
     firstName: 'Saul',
     lastName: 'Goodman',
     birthYear: 1960,
-    website: 'https://bettercallsaul.com'
+    website: 'https://bettercallsaul.com',
+    crime: 'Money Laundering, Fraud'
   },
   {
     firstName: 'Walter',
     lastName: 'White',
     birthYear: 1958,
-    website: 'https://walter-white.meth'
+    website: 'https://walter-white.meth',
+    crime: 'Drug Kingpin'
   },
   {
     firstName: 'Jessy',
     lastName: 'Pinkman',
     birthYear: 1984,
-    website: 'https://jessy-yo.bitch'
+    website: 'https://jessy-yo.bitch',
+    crime: 'Drug Dealing'
   }
 ]
 
