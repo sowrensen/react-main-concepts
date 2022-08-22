@@ -24,10 +24,14 @@ class Personnel extends React.Component {
   render() {
     return (
       <div>
-        <div>Name: {this.formatName(this.props.person.firstName, this.props.person.lastName)}</div>
+        <div>
+          Name: {' '}
+          <a href={this.props.person.link} target='_blank'>
+            {this.formatName(this.props.person.firstName, this.props.person.lastName)}
+          </a>
+        </div>
         <div>Birth Year: {this.props.person.birthYear}</div>
         <div>Age: <Age fromYear={2010} birthYear={this.state.birthYear} /></div>
-        <div>Website: <a href={this.props.person.website} target='_blank'>Personal website</a></div>
         <div>
           Crime: {this.state.isCrimeVisible ? this.props.person.crime : 'Click to reveal'} {' '}
           <button onClick={(e) => this.showCrime(this.props.person.firstName)}>{this.state.isCrimeVisible ? 'Hide' : 'Show'}</button>
