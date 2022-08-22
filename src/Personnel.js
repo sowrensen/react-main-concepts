@@ -32,6 +32,7 @@ class Personnel extends React.Component {
         </div>
         <div>Birth Year: {this.props.person.birthYear}</div>
         <div>Age: <Age fromYear={2010} birthYear={this.state.birthYear} /></div>
+        <div>Status: {this.props.person.status}</div>
         <div>
           Crime: {this.state.isCrimeVisible ? this.props.person.crime : 'Click to reveal'} {' '}
           <button onClick={(e) => this.showCrime(this.props.person.firstName)}>{this.state.isCrimeVisible ? 'Hide' : 'Show'}</button>

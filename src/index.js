@@ -10,6 +10,7 @@ function App() {
       firstName: 'Saul',
       lastName: 'Goodman',
       birthYear: 1960,
+      status: 'Alive',
       crime: 'Money Laundering, Fraud',
       link: 'https://breakingbad.fandom.com/wiki/Jimmy_McGill'
     },
@@ -17,6 +18,7 @@ function App() {
       firstName: 'Walter',
       lastName: 'White',
       birthYear: 1958,
+      status: 'Deceased',
       crime: 'Drug Kingpin',
       link: 'https://breakingbad.fandom.com/wiki/Walter_White'
     },
@@ -24,6 +26,7 @@ function App() {
       firstName: 'Jessy',
       lastName: 'Pinkman',
       birthYear: 1984,
+      status: 'Alive',
       crime: 'Drug Dealing',
       link: 'https://breakingbad.fandom.com/wiki/Jesse_Pinkman'
     }
