@@ -20,13 +20,31 @@ class NewConvict extends React.Component {
     }))
   }
 
-  toggleForm = (event) => {
+  toggleForm = () => {
     this.setState((prevState) => ({ showForm: !prevState.showForm }))
   }
 
   addConvict = (event) => {
-    console.log(this.state)
+    this.props.addConvict({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      birthYear: this.state.birthYear,
+      crime: this.state.crime,
+      link: this.state.link
+    })
+    this.clearInputs()
     event.preventDefault()
+  }
+
+  clearInputs() {
+    this.setState({
+      showForm: false,
+      firstName: '',
+      lastName: '',
+      birthYear: '',
+      crime: '',
+      link: '',
+    })
   }
 
   render() {
@@ -38,7 +56,7 @@ class NewConvict extends React.Component {
             <div>
               <label htmlFor="firstName">
                 First Name: {' '}
-                <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInput} />
+                <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInput} required/>
               </label>
             </div>
             <br />
@@ -46,7 +64,7 @@ class NewConvict extends React.Component {
             <div>
               <label htmlFor="lastName">
                 Last Name: {' '}
-                <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInput} />
+                <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInput} required/>
               </label>
             </div>
             <br />
@@ -54,7 +72,7 @@ class NewConvict extends React.Component {
             <div>
               <label htmlFor="birthYear">
                 Birth Year: {' '}
-                <input type="number" name="birthYear" value={this.state.birthYear} onChange={this.handleInput} />
+                <input type="number" name="birthYear" value={this.state.birthYear} onChange={this.handleInput} required/>
               </label>
             </div>
             <br />
@@ -62,7 +80,7 @@ class NewConvict extends React.Component {
             <div>
               <label htmlFor="crime">
                 Crime: {' '}
-                <textarea name="crime" value={this.state.crime} onChange={this.handleInput} />
+                <textarea name="crime" value={this.state.crime} onChange={this.handleInput} required/>
               </label>
             </div>
             <br />
@@ -70,7 +88,7 @@ class NewConvict extends React.Component {
             <div>
               <label htmlFor="link">
                 Link: {' '}
-                <input type="text" name="link" value={this.state.link} onChange={this.handleInput} />
+                <input type="text" name="link" value={this.state.link} onChange={this.handleInput} required/>
               </label>
               <br />
             </div>

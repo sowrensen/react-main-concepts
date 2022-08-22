@@ -11,7 +11,7 @@ class Age extends React.Component {
   }
 
   render() {
-    if (! this.props.birthYear) {
+    if (!this.props.birthYear) {
       return null
     }
     return (
